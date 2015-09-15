@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<models>
+    <model name="ExpiredRoute" modelClass="ride\application\orm\model\ExpiredRouteModel">
+        <field name="site" type="string">
+            <validation name="required"/>
+        </field>
+        <field name="node" type="string">
+            <validation name="required"/>
+        </field>
+        <field name="locale" type="string">
+            <validation name="required"/>
+        </field>
+        <field name="path" type="string">
+            <validation name="required"/>
+        </field>
+        <field name="baseUrl" type="string"/>
+    </model>
+    <model name="Node" modelClass="ride\application\orm\model\NodeModel" entryClass="ride\application\cms\node\NodeEntry">
+		<field name="nodeId" type="string">
+            <validation name="required"/>
+		</field>
+        <field name="nodeType" type="string">
+            <validation name="required"/>
+		</field>
+		<field name="revision" type="string"/>
+		<field name="parent" type="string"/>
+        <field name="orderIndex" type="integer"/>
+        <field name="properties" model="NodeProperty" relation="hasMany" dependant="true"/>
+
+        <option name="behaviour.date" value="true"/>
+    </model>
+    <model name="NodeProperty">
+        <field name="node" model="Node" relation="belongsTo">
+            <validation name="required" />
+        </field>
+        <field name="key" type="string">
+            <validation name="required" />
+        </field>
+        <field name="value" type="text" />
+        <field name="inherit" type="boolean" default="0" />
+    </model>
+</models>

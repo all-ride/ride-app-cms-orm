@@ -1,0 +1,56 @@
+{
+    "dependencies": [
+        {
+            "interfaces": "ride\\library\\cms\\expired\\io\\ExpiredRouteIO",
+            "class": "ride\\application\\cms\\expired\\io\\OrmExpiredRouteIO",
+            "id": "ini",
+            "calls": [
+                {
+                    "method": "__construct",
+                    "arguments": [
+                        {
+                            "name": "model",
+                            "type": "call",
+                            "properties": {
+                                "interface": "ride\\library\\orm\\OrmManager",
+                                "method": "getExpiredRouteModel"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "interfaces": "ride\\library\\cms\\node\\io\\NodeIO",
+            "class": "ride\\application\\cms\\node\\io\\OrmNodeIO",
+            "id": "orm",
+            "calls": [
+                {
+                    "method": "__construct",
+                    "arguments": [
+                        {
+                            "name": "model",
+                            "type": "call",
+                            "properties": {
+                                "interface": "ride\\library\\orm\\OrmManager",
+                                "method": "getNodeModel"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "method": "setWidgetIdOffset",
+                    "arguments": [
+                        {
+                            "name": "widgetIdOffset",
+                            "type": "parameter",
+                            "properties": {
+                                "key": "cms.widget.offset"
+                            }
+                        }
+                    ]
+                }
+            ]
+
+      }    ]
+}
